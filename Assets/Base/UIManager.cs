@@ -11,15 +11,6 @@ public class UIManager : MonoBehaviour
     public void OnStartGame()
     {
         mainUI.SetActive(false);
-        PlayerController.Instance.PlayerState = PlayerState.Playing;
-    }
-    public void OnQuitGame()
-    {
-        PlayerController.Instance.PlayerState = PlayerState.None;
-    }
-    public void OnPauseGame()
-    {
-        PlayerController.Instance.PlayerState = PlayerState.Pause;
     }
     public IEnumerator WinGame()
     {
