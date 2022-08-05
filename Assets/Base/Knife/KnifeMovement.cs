@@ -8,15 +8,17 @@ public class KnifeMovement : Singleton<KnifeMovement>
     [SerializeField] private float currentTweenTime;
     [SerializeField] private float rotateTime;
     [SerializeField] private Vector3 targetRotation = new Vector3(0,0,145);
+
     
-    
-    [SerializeField] private Tween moveTween;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float speed = 1;
+    private Tween rbTween;
+    private Tween moveTween;
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        var isTouch = Input.GetMouseButtonDown(0);
+        if (isTouch)
         {
             OnCalculateCurrentSpeed();
         }
@@ -25,13 +27,12 @@ public class KnifeMovement : Singleton<KnifeMovement>
     {
         if (currentSpeed > 0)
         {
-            Debug.Log("Force");
-            rb.AddForce(new Vector3(currentSpeed * 6.2f,0,0) * Time.fixedDeltaTime,ForceMode.Impulse);
+            rb.AddForce(new Vector3(currentSpeed * 8.5f,0,0) * Time.fixedDeltaTime,ForceMode.Impulse);
         }
     }
     public void OnGroundTrigger()
     {
-        CheckToRb(true);
+        CheckToRb(true,false);
     }
     private void OnCalculateCurrentSpeed()
     {
@@ -41,16 +42,19 @@ public class KnifeMovement : Singleton<KnifeMovement>
         
         moveTween = DOTween.To(()  => currentSpeed, set=> currentSpeed = set, 0, currentTweenTime);
 
-        transform.DOKill();
-        transform.DOLocalRotate(new Vector3(0,0,-45) + new Vector3(0,0,-75), rotateTime,RotateMode.FastBeyond360);
+        rbTween.Kill();
+        rbTween  = rb.DORotate(new Vector3(0,0,-15) + new Vector3(0,0,-15),rotateTime,RotateMode.FastBeyond360).
+            OnComplete((() => rbTween.Kill()));
+        // rbTween.Kill();
+        // rbTween = rb.DORotate(new Vector3(0,0,-45) + new Vector3(0,0,-75), rotateTime,RotateMode.FastBeyond360);
         
+        rb.velocity = Vector3.up * 8;
+        CheckToRb(false,true);
+    }
 
-        rb.velocity = Vector3.up * 7.2f;
-        CheckToRb(false);
-    }
-    private void CheckToRb(bool canKinematic) => rb.isKinematic = canKinematic;
-    private void OnChangeRotation()
+    private void CheckToRb(bool canKinematic, bool canGravity)
     {
-        transform.DORotate(new Vector3(0,0,135f),currentSpeed);
-    }
+        rb.isKinematic = canKinematic;
+        rb.useGravity = canGravity;
+    } 
 }

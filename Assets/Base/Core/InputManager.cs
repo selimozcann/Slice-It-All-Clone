@@ -13,7 +13,7 @@ public class InputManager : Singleton<InputManager>
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            
+            isTouch = false;
         }
     }
 }

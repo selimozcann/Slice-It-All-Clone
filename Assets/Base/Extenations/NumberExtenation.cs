@@ -1,5 +1,5 @@
 using UnityEngine;
 
-public  class NumberExtenation : MonoBehaviour
+public class NumberExtenation : MonoBehaviour
 {
 }

@@ -12,7 +12,7 @@ public class KnifeTriggerController : MonoBehaviour
         }
         else if (other.CompareTag(cutStr))
         {
-            
+            BaseKnife.I.OnCutObject(other);
         }
     }
 }
