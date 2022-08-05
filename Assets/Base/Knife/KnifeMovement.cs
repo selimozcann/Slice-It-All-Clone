@@ -3,15 +3,17 @@ using UnityEngine;
 
 public class KnifeMovement : Singleton<KnifeMovement>
 {
-    [Range(0, 10)] 
+    [Range(0, 2)] 
     [SerializeField] private float currentSpeed = 0;
+    
     [SerializeField] private float currentTweenTime;
     [SerializeField] private float rotateTime;
-    [SerializeField] private Vector3 targetRotation = new Vector3(0,0,145);
+    [SerializeField] private Vector3 targetRotation = new Vector3(0,0,-50);
 
     
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float speed = 1;
+    
     private Tween rbTween;
     private Tween moveTween;
 
@@ -32,7 +34,7 @@ public class KnifeMovement : Singleton<KnifeMovement>
     }
     public void OnGroundTrigger()
     {
-        CheckToRb(true,false);
+        InactiveToRb(true,false);
     }
     private void OnCalculateCurrentSpeed()
     {
@@ -43,17 +45,15 @@ public class KnifeMovement : Singleton<KnifeMovement>
         moveTween = DOTween.To(()  => currentSpeed, set=> currentSpeed = set, 0, currentTweenTime);
 
         rbTween.Kill();
-        rbTween  = rb.DORotate(new Vector3(0,0,-15) + new Vector3(0,0,-15),rotateTime,RotateMode.FastBeyond360).
+        rbTween  = rb.DORotate(new Vector3(0,0,-15f) + targetRotation,rotateTime,RotateMode.FastBeyond360).
             OnComplete((() => rbTween.Kill()));
-        // rbTween.Kill();
-        // rbTween = rb.DORotate(new Vector3(0,0,-45) + new Vector3(0,0,-75), rotateTime,RotateMode.FastBeyond360);
-        
-        rb.velocity = Vector3.up * 8;
-        CheckToRb(false,true);
-    }
 
-    private void CheckToRb(bool canKinematic, bool canGravity)
+        rb.velocity = Vector3.up * 8;
+        InactiveToRb(false,true);
+    }
+    private void InactiveToRb(bool canKinematic, bool canGravity)
     {
+        rb.velocity = Vector3.zero;
         rb.isKinematic = canKinematic;
         rb.useGravity = canGravity;
     } 

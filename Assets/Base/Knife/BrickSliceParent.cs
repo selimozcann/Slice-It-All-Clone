@@ -33,7 +33,7 @@ public class BrickSliceParent : MonoBehaviour
     public void ForceRb()
     {
 
-        rightBrickRb.AddForce(Vector3.back * 1.2f,ForceMode.Impulse);
-        leftBrickRb.AddForce(Vector3.forward *1.2f, ForceMode.Impulse);
+        rightBrickRb.AddRelativeForce(Vector3.back * 1.8f,ForceMode.Impulse);
+        leftBrickRb.AddRelativeForce(Vector3.forward *1.8f, ForceMode.Impulse);
     }
 }

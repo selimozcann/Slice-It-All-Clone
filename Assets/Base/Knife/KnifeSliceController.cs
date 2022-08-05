@@ -1,5 +1,5 @@
 using UnityEngine;
-public class BaseKnife : Singleton<BaseKnife>
+public class KnifeSliceController : Singleton<KnifeSliceController>
 {
     private float forceValue;
     public void OnCutObject(Collider other)
