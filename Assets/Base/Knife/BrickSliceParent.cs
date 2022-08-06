@@ -15,25 +15,36 @@ public class BrickSliceParent : MonoBehaviour
 
     public void MainSliceCheckToBox() => mainSlice.isTrigger = false;
     public void CheckToParentBrick() => lefRightParentBrick.SetActive(true);
+
+    private const string untagged = "Untagged";
+    private const string brickSlice = "BrickSlice";
     
-    public void CheckToBoxCol(bool isActive)
+    public void CheckToBoxAndTag(bool isActive)
     {
+        mainSlice.gameObject.SetActive(false);
+        
+        leftCollider.tag = untagged;
+        rightCollider.tag = untagged;
+        
         leftCollider.isTrigger = isActive;
         rightCollider.isTrigger = isActive;
     }
+    public void SetLayer()
+    {
+        mainSlice.gameObject.layer = LayerMask.NameToLayer(brickSlice);
+        leftCollider.gameObject.layer = LayerMask.NameToLayer(brickSlice);
+        rightCollider.gameObject.layer = LayerMask.NameToLayer(brickSlice);
+    }
     public void ActiveRb()
     {
-        
         leftBrickRb.isKinematic = false;
         rightBrickRb.isKinematic = false;
-        
         leftBrickRb.useGravity = true;
         rightBrickRb.useGravity = true;
     }
     public void ForceRb()
     {
-
-        rightBrickRb.AddRelativeForce(Vector3.back * 1.8f,ForceMode.Impulse);
+        rightBrickRb.AddRelativeForce(Vector3.forward * 1.8f,ForceMode.Impulse);
         leftBrickRb.AddRelativeForce(Vector3.forward *1.8f, ForceMode.Impulse);
     }
 }

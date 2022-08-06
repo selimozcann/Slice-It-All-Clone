@@ -7,22 +7,24 @@ public class CameraController : MonoBehaviour
     private Vector3 refVecCamera = Vector3.up;
     private float startVecY;
 
-    private float targetYVec;
-
+    private float targetYVec = -0.05f;
+    private float offsetY;
+    
     private delegate int yValue();
-
+    
     private void Start()
     {
-        startVecY = transform.position.y;
+        startVecY = target.position.y;
         dif = transform.position - target.position;
     }
     private void FixedUpdate()
     {
         if (target != null)
         {
-            Vector3 targetVec = Vector3.SmoothDamp(transform.position, 
-                new Vector3(target.position.x + dif.x, target.position.y + offset.y, transform.position.z), ref refVecCamera,0.9f);
-            transform.position = targetVec;
+            float yMove = target.position.y >= startVecY ? target.position.y + dif.y : transform.position.y  + targetYVec;
+            Vector3 targetVec = new Vector3(target.position.x + dif.x, yMove, transform.position.z);
+            Vector3 currentVec = Vector3.SmoothDamp(transform.position, targetVec , ref refVecCamera,0.8f);
+            transform.position = currentVec;
         }
     }
 }

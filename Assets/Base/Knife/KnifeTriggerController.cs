@@ -15,4 +15,5 @@ public class KnifeTriggerController : MonoBehaviour
             KnifeSliceController.I.OnCutObject(other);
         }
     }
+    
 }

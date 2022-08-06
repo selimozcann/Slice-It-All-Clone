@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-
 public class Level : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Material skyboxMaterial;
+    [SerializeField] private Material baseSkyMaterial;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        InitSkyboxMaterial();
+    }
+    void InitSkyboxMaterial()
+    {
+        skyboxMaterial = skyboxMaterial == null ? baseSkyMaterial : skyboxMaterial;
     }
 }

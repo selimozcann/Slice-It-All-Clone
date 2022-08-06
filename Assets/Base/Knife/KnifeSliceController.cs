@@ -8,15 +8,11 @@ public class KnifeSliceController : Singleton<KnifeSliceController>
         
         if (brickSliceParent != null)
         {
-            
-            brickSliceParent.CheckToBoxCol(false);
+            brickSliceParent.SetLayer();
+            brickSliceParent.CheckToBoxAndTag(false);
             brickSliceParent.ActiveRb();
             brickSliceParent.ForceRb();
             brickSliceParent.CheckToParentBrick();
-            // brickSliceParent.MainSliceCheckToBox();
-            
-            brickSliceParent.IsBrickForce = true;
-
         }
     }
 }

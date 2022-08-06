@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1876557731419759404}
   - component: {fileID: 3630716984321051606}
   - component: {fileID: 8532295369424010315}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BrickSliceAll
   m_TagString: Cut
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 3630716984097055498}
   - component: {fileID: 3630716984097055496}
   - component: {fileID: 2553042829219117345}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BrickSliceRight
   m_TagString: Cut
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3630716984758006730}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BrickSliceBase_Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 3630716984770250855}
   - component: {fileID: 146172383149287269}
   - component: {fileID: 5900954118719499899}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BrickSliceLeft
   m_TagString: Cut
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4242211756619672271}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftRightBrick
   m_TagString: Cut
   m_Icon: {fileID: 0}
