@@ -1,14 +1,16 @@
 using System.Linq;
 using UnityEngine;
 
-public class KnifeRayController : MonoBehaviour
+public class KnifeColliderController : Singleton<KnifeColliderController>
 {
     [SerializeField] private Transform knifeBottom;
-    [SerializeField] private KnifeMovement knifeSliceController;
     private float rayDistance = 0.1f;
 
     private const string brickSliceStr = "UnCutSlice";
     private const string defaultStr = "Default";
+
+    private bool isSlice = false;
+    public bool IsSlice  { get => isSlice; set => isSlice = value; }
     
     private void FixedUpdate()
     {
@@ -16,16 +18,19 @@ public class KnifeRayController : MonoBehaviour
     }
     private void RayToMouse()
     {
-        Collider[] overlapBox = Physics.OverlapSphere(knifeBottom.position,0.17f);
+        if (IsSlice)
+            return;
+        
+        Collider[] overlapBox = Physics.OverlapSphere(knifeBottom.position,0.125f);
         foreach(var overLapCollider in overlapBox.Where(x => x.gameObject.layer == LayerMask.NameToLayer(brickSliceStr)))
         {
-            Debug.Log("LogFirst");
             overLapCollider.isTrigger = false;
+            // KnifeMovement.I.InactiveToRb(true,false,CollisionDetectionMode.ContinuousSpeculative); 
         }
     }
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(knifeBottom.position, 0.17f);
+        Gizmos.DrawWireSphere(knifeBottom.position, 0.125f);
     }
 }

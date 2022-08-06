@@ -3,7 +3,7 @@ using System.Collections;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
     [Header("UI")]
     [SerializeField] private GameObject mainUI;
@@ -35,7 +35,11 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         winImage.SetActive(true);
     }
-    public IEnumerator FailGame()
+    public void OnFailGame()
+    {
+        StartCoroutine(FailGameCoroutine());
+    }
+    private IEnumerator FailGameCoroutine()
     {
         yield return new WaitForSeconds(0.2f);
         failImage.SetActive(true);

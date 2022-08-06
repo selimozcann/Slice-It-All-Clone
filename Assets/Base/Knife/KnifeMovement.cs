@@ -3,9 +3,7 @@ using UnityEngine;
 
 public class KnifeMovement : Singleton<KnifeMovement>
 {
-    [Range(0, 2)] 
-    
-    
+    [Range(0, 2)]
     [SerializeField] private float currentSpeed = 0;
     
     [SerializeField] private float currentTweenTime;
@@ -30,7 +28,7 @@ public class KnifeMovement : Singleton<KnifeMovement>
     {
         if (currentSpeed > 0)
         {
-            rb.AddForce(new Vector3(currentSpeed * 6f,currentSpeed,0) * Time.fixedDeltaTime,ForceMode.Impulse);
+            rb.AddForce(new Vector3(currentSpeed * 6f,0.35f,0) * Time.fixedDeltaTime,ForceMode.Impulse);
         }
     }
     public void OnGroundTrigger()
@@ -40,7 +38,7 @@ public class KnifeMovement : Singleton<KnifeMovement>
     private void OnCalculateCurrentSpeed()
     {
         InactiveToRb(false,true,CollisionDetectionMode.Continuous);
-        rb.velocity =  new Vector3(0.5f,8f,0f);
+        rb.velocity =  new Vector3(0.5f,6.5f,0f);
 
         currentSpeed = speed;
         moveTween?.Kill();
@@ -54,8 +52,9 @@ public class KnifeMovement : Singleton<KnifeMovement>
     public void InactiveToRb(bool canKinematic, bool canGravity,CollisionDetectionMode collisionDetectionMode)
     {
         // rb.velocity = Vector3.zero;
-        rb.collisionDetectionMode = collisionDetectionMode;
         rb.isKinematic = canKinematic;
         rb.useGravity = canGravity;
+        rb.collisionDetectionMode = collisionDetectionMode;
+        
     } 
 }
