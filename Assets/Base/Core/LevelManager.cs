@@ -20,7 +20,7 @@ public class LevelManager : Singleton<LevelManager>
     private void SetLevelIndex()
     {
         levelIndex = PlayerPrefs.GetInt(StringData.PLAYER);
-        levelIndex = levelIndex >= 2 ? 0 : levelIndex;
+        levelIndex = levelIndex == 3 ? 0 : levelIndex;
         CurrentLevel();
     }
     private void CurrentLevel() =>  Debug.Log("Current Level is " + levelIndex + 1);
