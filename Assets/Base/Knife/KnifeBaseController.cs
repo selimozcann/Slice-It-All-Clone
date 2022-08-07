@@ -19,6 +19,7 @@ public class KnifeBaseController : Singleton<KnifeBaseController>
     private Tween moveTween;
 
     private string levelEndLog;
+    private string untagged = "Untagged";
     private void Update()
     {
         var isTouch = Input.GetMouseButtonDown(0);
@@ -29,6 +30,7 @@ public class KnifeBaseController : Singleton<KnifeBaseController>
     }
     public void OnFinishTrigger(Collider other)
     {
+        other.tag = untagged;
         InactiveToRb(true,false,CollisionDetectionMode.Discrete);
         
         var otherText = other.GetComponentInChildren<TextMeshPro>().text;

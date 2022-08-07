@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 277169590343271421}
   m_Layer: 0
   m_Name: LevelEnd
-  m_TagString: Finish
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -263,7 +263,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277169590343271420}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 2120336867669188889}
   m_Layer: 0
   m_Name: QuadLevelEnd
-  m_TagString: FinishText
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 606101630783069936}
   m_Layer: 0
   m_Name: QuadLevelEnd (7)
-  m_TagString: FinishText
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -524,7 +524,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748480849651029604}
   m_LocalRotation: {x: -0, y: 0.008360443, z: -0, w: 0.99996513}
-  m_LocalPosition: {x: 0, y: 0, z: -0.07}
+  m_LocalPosition: {x: 0, y: 0, z: -0.071}
   m_LocalScale: {x: 0.100729585, y: 0.115441315, z: 0.09667861}
   m_Children: []
   m_Father: {fileID: 2630066936631749862}
@@ -532,7 +532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90.958, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.82, y: -0.06}
+  m_AnchoredPosition: {x: 0.904, y: -0.055}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &4952540206322302900
@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 308514742241106500}
   m_Layer: 0
   m_Name: QuadLevelEnd1
-  m_TagString: FinishText
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1300,7 +1300,7 @@ GameObject:
   - component: {fileID: 2432010735164532975}
   m_Layer: 0
   m_Name: QuadLevelEnd (6)
-  m_TagString: FinishText
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1570,7 +1570,7 @@ GameObject:
   - component: {fileID: 6606817223150998655}
   m_Layer: 0
   m_Name: QuadLevelEnd (5)
-  m_TagString: FinishText
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2010,7 +2010,7 @@ GameObject:
   - component: {fileID: 6194529749684416152}
   m_Layer: 0
   m_Name: QuadLevelEnd3
-  m_TagString: FinishText
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2106,7 +2106,7 @@ GameObject:
   - component: {fileID: 7555003190987175794}
   m_Layer: 0
   m_Name: QuadLevelEnd
-  m_TagString: FinishText
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2202,7 +2202,7 @@ GameObject:
   - component: {fileID: 6952005402685100242}
   m_Layer: 0
   m_Name: QuadLevelEnd (4)
-  m_TagString: FinishText
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

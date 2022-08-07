@@ -2,31 +2,30 @@ using UnityEngine;
 using System.Collections;
 using DG.Tweening;
 using TMPro;
-using UnityEngine.UI;
+using UnityEngine.Serialization;
 
 public class UIManager : Singleton<UIManager>
 {
     [Header("UI")] 
     [SerializeField] private TextMeshProUGUI levelText;
-    [SerializeField] private GameObject mainUI;
+    [FormerlySerializedAs("mainUI")] [SerializeField] private GameObject restartButton;
     [SerializeField] private GameObject winImage;
     [SerializeField] private GameObject failImage;
     [SerializeField] private TextMeshProUGUI tapTapText;
-    [SerializeField] private Vector3 targetTapTapVec = new Vector3(0.6f, 0.6f, 1f);
-
+    
     private int targetFontSize = 75;
-    private const string levelStr = "Level";
+    private const string levelStr = "Level ";
 
     private void Awake()
     {
-        DOTween.KillAll();
+        DOTween.KillAll(true);
     }
     private void Start()
     {
         SetTapTextScale();
         SetLevelText();
     }
-    private void SetLevelText() => levelText.text = levelStr + LevelManager.I.levelIndex;
+    private void SetLevelText() => levelText.text = levelStr + (LevelManager.I.levelIndex + 1);
     private void SetTapTextScale()
     {
         DOTween.To(()  => tapTapText.fontSize, set=> tapTapText.fontSize  = set, targetFontSize, 0.8f).SetEase(Ease.Linear).SetLoops(-1,LoopType.Yoyo);
@@ -34,6 +33,7 @@ public class UIManager : Singleton<UIManager>
     public void OnStartGame()
     {
         tapTapText.gameObject.SetActive(false);
+        restartButton.SetActive(true);
     }
     public void OnWinGame()
     {
