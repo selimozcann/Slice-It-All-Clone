@@ -1,7 +1,6 @@
 using UnityEngine;
 public class KnifeSliceController : Singleton<KnifeSliceController>
 {
-    private float forceValue;
     public void OnCutObject(Collider other)
     {
         BrickSliceParent brickSliceParent = other.GetComponent<BrickSliceParent>();

@@ -115,6 +115,7 @@ MonoBehaviour:
   lefRightParentBrick: {fileID: 5466852704183322475}
   rightBrickRb: {fileID: 2553042829219117345}
   leftBrickRb: {fileID: 5900954118719499899}
+  forceAmount: 1.8
   isBrickForce: 0
 --- !u!1 &3630716984097055542
 GameObject:

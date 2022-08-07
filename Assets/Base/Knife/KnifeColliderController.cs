@@ -21,7 +21,7 @@ public class KnifeColliderController : Singleton<KnifeColliderController>
         if (IsSlice)
             return;
         
-        Collider[] overlapBox = Physics.OverlapSphere(knifeBottom.position,0.125f);
+        Collider[] overlapBox = Physics.OverlapSphere(knifeBottom.position,0.1f);
         foreach(var overLapCollider in overlapBox.Where(x => x.gameObject.layer == LayerMask.NameToLayer(brickSliceStr)))
         {
             overLapCollider.isTrigger = false;
@@ -31,6 +31,6 @@ public class KnifeColliderController : Singleton<KnifeColliderController>
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(knifeBottom.position, 0.125f);
+        Gizmos.DrawWireSphere(knifeBottom.position, 0.1f);
     }
 }

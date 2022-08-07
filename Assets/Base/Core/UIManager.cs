@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using TMPro;
 using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
 {
-    [Header("UI")]
+    [Header("UI")] 
+    [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private GameObject mainUI;
     [SerializeField] private GameObject winImage;
     [SerializeField] private GameObject failImage;
@@ -13,7 +15,12 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private Vector3 targetTapTapVec = new Vector3(0.6f, 0.6f, 1f);
 
     private int targetFontSize = 75;
+    private const string level = "Level";
 
+    private void SetLevelText()
+    {
+        levelText.text = level + LevelManager.I.levelIndex;
+    }
     private void Awake()
     {
         DOTween.KillAll();

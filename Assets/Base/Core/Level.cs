@@ -12,5 +12,6 @@ public class Level : MonoBehaviour
     void InitSkyboxMaterial()
     {
         skyboxMaterial = skyboxMaterial == null ? baseSkyMaterial : skyboxMaterial;
+        RenderSettings.skybox = skyboxMaterial;
     }
 }
