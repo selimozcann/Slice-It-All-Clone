@@ -29,6 +29,8 @@ public class KnifeBaseController : Singleton<KnifeBaseController>
     }
     public void OnFinishTrigger(Collider other)
     {
+        InactiveToRb(true,false,CollisionDetectionMode.Discrete);
+        
         var otherText = other.GetComponentInChildren<TextMeshPro>().text;
         levelEndLog  = otherText != null ? "Your score is " + otherText : "Your score is zero";
         Debug.Log(levelEndLog);

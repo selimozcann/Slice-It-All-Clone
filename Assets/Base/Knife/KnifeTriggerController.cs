@@ -22,7 +22,7 @@ public class KnifeTriggerController : MonoBehaviour
         {
             KnifeBaseController.I.OnFinishTrigger(other);
             LevelManager.I.NextLevelData();
-            UIManager.I.OnFailGame();
+            UIManager.I.OnWinGame();
         }
     }
 }

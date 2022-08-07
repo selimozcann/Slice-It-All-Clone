@@ -14,13 +14,27 @@ public class LevelManager : Singleton<LevelManager>
     }
     private void LevelInit()
     {
-        levelIndex = levelIndex >= 2  ? 0 : PlayerPrefs.GetInt(StringData.PLAYER);
+        SetLevelIndex();
         Level levelObject = testLevel != null ? SpawnLevel(testLevel) : SpawnLevel(levels[levelIndex]);
     }
+    private void SetLevelIndex()
+    {
+        if (levelIndex > 2)
+        {
+            PlayerPrefs.DeleteKey(StringData.PLAYER);
+            
+        }
+        else
+        {
+            levelIndex = PlayerPrefs.GetInt(StringData.PLAYER);
+            
+        }
+        CurrentLevel();
+    }
+    private void CurrentLevel() =>  Debug.Log("Current Level is " + levelIndex + 1);
     private Level SpawnLevel(Level level) => Instantiate(level,level.transform.position,Quaternion.identity);
     public void NextLevelData() => PlayerPrefs.SetInt(StringData.PLAYER, levelIndex + 1);
-    public void RestartLevelData() => PlayerPrefs.SetInt(StringData.PLAYER, levelIndex);
-    public void RestartScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    public void RestartScene() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
 
      
 }

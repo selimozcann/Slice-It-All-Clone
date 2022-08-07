@@ -11,16 +11,12 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject mainUI;
     [SerializeField] private GameObject winImage;
     [SerializeField] private GameObject failImage;
-    [SerializeField] private Text tapTapText;
+    [SerializeField] private TextMeshProUGUI tapTapText;
     [SerializeField] private Vector3 targetTapTapVec = new Vector3(0.6f, 0.6f, 1f);
 
     private int targetFontSize = 75;
-    private const string level = "Level";
+    private const string levelStr = "Level";
 
-    private void SetLevelText()
-    {
-        levelText.text = level + LevelManager.I.levelIndex;
-    }
     private void Awake()
     {
         DOTween.KillAll();
@@ -28,16 +24,22 @@ public class UIManager : Singleton<UIManager>
     private void Start()
     {
         SetTapTextScale();
+        SetLevelText();
     }
+    private void SetLevelText() => levelText.text = levelStr + LevelManager.I.levelIndex;
     private void SetTapTextScale()
     {
         DOTween.To(()  => tapTapText.fontSize, set=> tapTapText.fontSize  = set, targetFontSize, 0.8f).SetEase(Ease.Linear).SetLoops(-1,LoopType.Yoyo);
     }
     public void OnStartGame()
     {
-        mainUI.SetActive(false);
+        tapTapText.gameObject.SetActive(false);
     }
-    public IEnumerator WinGame()
+    public void OnWinGame()
+    {
+        StartCoroutine(WinGameCoroutine());
+    }
+    public IEnumerator WinGameCoroutine()
     {
         yield return new WaitForSeconds(0.2f);
         winImage.SetActive(true);

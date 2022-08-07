@@ -2,7 +2,7 @@ using UnityEngine;
 public class BrickSliceParent : MonoBehaviour
 {
     [SerializeField] private Collider mainSlice;
-    [SerializeField] private BoxCollider leftCollider, rightCollider;
+    [SerializeField] private Collider leftCollider, rightCollider;
     [SerializeField] private GameObject lefRightParentBrick;
     public Rigidbody rightBrickRb;
     public Rigidbody leftBrickRb;
