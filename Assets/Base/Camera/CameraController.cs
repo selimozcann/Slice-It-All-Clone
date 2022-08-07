@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
         startVecY = target.position.y;
         dif = transform.position - target.position;
     }
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         if (target != null)
         {
